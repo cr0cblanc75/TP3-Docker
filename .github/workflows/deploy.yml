@@ -31,7 +31,7 @@ jobs:
             - name: Configure SSH
               env:
                   SSH: ${{ secrets.SSH }}
-                  SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+                  SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
               run: |
                   mkdir -p ~/.ssh
                   chmod 700 ~/.ssh
