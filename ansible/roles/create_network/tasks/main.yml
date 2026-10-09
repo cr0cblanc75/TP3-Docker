@@ -1,0 +1,12 @@
+# tasks file for roles/create_network
+---
+- name: Install Docker SDK for Python
+  ansible.builtin.apt:
+      name: python3-docker
+      state: present
+      update_cache: true
+
+- name: Create application network
+  community.docker.docker_network:
+      name: app-network
+      state: present

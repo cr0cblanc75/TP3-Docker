@@ -1,0 +1,38 @@
+---
+- name: Remove old proxy container
+  community.docker.docker_container:
+      name: proxy
+      state: absent
+
+- name: Remove old frontend container
+  community.docker.docker_container:
+      name: front
+      state: absent
+
+- name: Launch frontend
+  community.docker.docker_container:
+      name: front
+      image: eugenelallain/tp2-docker-devops-front:latest
+      state: started
+      restart_policy: unless-stopped
+      networks:
+          - name: app-network
+
+- name: Copy Nginx configuration
+  ansible.builtin.copy:
+      src: nginx.conf
+      dest: /tmp/nginx.conf
+      mode: "0644"
+
+- name: Launch proxy
+  community.docker.docker_container:
+      name: proxy
+      image: nginx:alpine
+      state: started
+      restart_policy: unless-stopped
+      networks:
+          - name: app-network
+      ports:
+          - "80:80"
+      volumes:
+          - /tmp/nginx.conf:/etc/nginx/conf.d/default.conf:ro

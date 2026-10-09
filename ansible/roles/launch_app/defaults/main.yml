@@ -1,0 +1,8 @@
+---
+app_container_name: app
+app_image: eugenelallain/tp2-docker-devops-back:latest
+app_port: "8080"
+db_name: "{{ lookup('ansible.builtin.env', 'DB_NAME') }}"
+db_user: "{{ lookup('ansible.builtin.env', 'DB_USER') }}"
+db_password: "{{ lookup('ansible.builtin.env', 'DB_PASSWORD') }}"
+
