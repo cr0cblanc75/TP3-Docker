@@ -9,5 +9,5 @@
           - name: app-network
       env:
           SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/{{ lookup('ansible.builtin.env', 'DB_NAME') }}"
-      SPRING_DATASOURCE_USERNAME: "{{ lookup('ansible.builtin.env', 'DB_USER') }}"
-      SPRING_DATASOURCE_PASSWORD: "{{ lookup('ansible.builtin.env', 'DB_PASSWORD') }}"
+          SPRING_DATASOURCE_USERNAME: "{{ lookup('ansible.builtin.env', 'DB_USER') }}"
+          SPRING_DATASOURCE_PASSWORD: "{{ lookup('ansible.builtin.env', 'DB_PASSWORD') }}"
