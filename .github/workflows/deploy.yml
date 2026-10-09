@@ -30,7 +30,7 @@ jobs:
 
             - name: Configure SSH
               env:
-                  SSH_PRIVATE_KEY: ${{ secrets.SSH }}
+                  SSH: ${{ secrets.SSH }}
                   SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
               run: |
                   mkdir -p ~/.ssh

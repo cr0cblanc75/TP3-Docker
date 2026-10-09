@@ -27,4 +27,3 @@ source .env
 set +a
 ```
 
-d
